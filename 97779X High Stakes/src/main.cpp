@@ -33,7 +33,7 @@ using namespace vex;
 competition Competition;
 
 
-//
+
 
 
 int x,y;
@@ -64,7 +64,7 @@ void motorbreak(){
   intake.setStopping(coast);
   Arm.setStopping(hold);
 }
-void motorshache(){
+void motorstop(){
   LeftF.setStopping(brake);
   LeftM.setStopping(brake);
   LeftB.setStopping(brake);
@@ -174,7 +174,7 @@ return 0;
 //task one end
 
 
-int tasktwo(){
+/*int tasktwo(){
   while(1){
       if((0<Opticaltop.hue() && Opticaltop.hue()<30) || (320<Opticaltop.hue() && Opticaltop.hue()<359)){
           upcolornum=1;
@@ -192,9 +192,7 @@ int tasktwo(){
           colornum=2;
           }
          else{
-          colornum=0;}
-
-       
+          colornum=0;
         
         if(Controller1.ButtonLeft.pressing()||(Controller1.ButtonRight.pressing())){
           if(bc==0){
@@ -204,14 +202,14 @@ int tasktwo(){
             bc=0;
           }while(Controller1.ButtonLeft.pressing()||(Controller1.ButtonRight.pressing())){}
         }
-        
+
         if(bc==1){
           takein=50;
           if(upcolornum!=0){
           takein=-60;
           } 
         }
-        
+
         if((upcolornum!=team)&&(upcolornum>0) &&(takein!=0)){
           top.set(true);
           wait(500,msec);
@@ -219,14 +217,9 @@ int tasktwo(){
           else{
            top.set(false); 
           }
-          
-    
-             
-     
-      
   }
     return 0;
-}
+}*/
 
 int task3(){
 
@@ -285,7 +278,7 @@ void pre_auton(void) {
   // Initializing Robot Configuration. DO NOT REMOVE!
   vexcodeInit();
   instart();
-    /*while(!auto_started){
+    while(!auto_started){
       Brain.Screen.clearScreen();
       Controller1.Screen.clearScreen();
       Brain.Screen.setFillColor(orange);
@@ -300,32 +293,21 @@ void pre_auton(void) {
       Controller1.Screen.print("Choose auton：");
       switch(current_auton_selection){
         case 0:
-          team=2;
-          Controller1.Screen.print("Blue5ringright");
+          team=1;
+          Controller1.Screen.print("Red5ringleft");
         case 1:
-          team=2;
-          Controller1.Screen.print("BlueLeft2");
+          team=1;
+          Controller1.Screen.print("RedRight");
           break;
         case 2:
           team=2;
-          Controller1.Screen.print("BlueRight");
+          Controller1.Screen.print("Blue5ringright");
           break;
         case 3:
-          team=1;
-          Controller1.Screen.print("RedLeft");
-          break;
-        case 4:
-          team=1;
-          Controller1.Screen.print("RedRight1");
-          break;
-        case 5:
-          team=1;
-          Controller1.Screen.print("RedRight2");
-          break;
-        case 6:
           team=2;
-          Controller1.Screen.print("Red5ringleft");
+          Controller1.Screen.print("BlueLeft");
           break;
+        
     }
     
     if(Brain.Screen.pressing()){
@@ -335,52 +317,37 @@ void pre_auton(void) {
       current_auton_selection = 0;
     }
     task::sleep(200);
-  }*/
+  }
 }
 
 
 
 void autonomous(void) {
-motorshache();
+motorstop();
 
 auto_started = true;
   switch(current_auton_selection){ 
     case 0:
-      team=2;
-      bluefivering();
+      team=1;
+      redfivering();
       motorbreak();
       break;
     case 1:
-    team=2;
-      blueleft2();
-      motorbreak();
-      break;
-    case 2: 
-    team=2;        
-      blueright();
-      motorbreak();
-      break;
-    case 3:
-    team=1;
-      redleft();
-      motorbreak();
-      break;
-    case 4:
-    team=1;
-      redright1();
-      motorbreak();
-      break;
-    case 5:
     team=1;
       redright2();
       motorbreak();
       break;
-    case 6:
-    team=2;
-      redfivering();
+    case 2: 
+    team=2;        
+      bluefivering();
       motorbreak();
       break;
- }  
+    case 3:
+    team=2;
+      blueleft2();
+      motorbreak();
+      break;
+    }
 
 
 }
@@ -420,5 +387,5 @@ int main() {
 }
 
 
-//
+
 

@@ -1,9 +1,4 @@
-void redleft();
-void redright1();
-void redright2();
-void blueleft1();
-void blueleft2();
-void blueright();
-void ringleft4();
-void bluefivering();
 void redfivering();
+void redright2();
+void bluefivering();
+void blueleft2();
